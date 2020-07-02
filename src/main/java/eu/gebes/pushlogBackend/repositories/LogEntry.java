@@ -8,16 +8,18 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-@Document("logs")
+@Document("logentries")
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
-public class Log {
+public class LogEntry {
 
     @Id
-    String token;
+    long timestamp;
 
     @Field
-    LogEntry logEntry;
+    String value;
 
+    @Field
+    boolean error;
 }

@@ -7,3 +7,5 @@ Content-Type: application/json
   "displayname": "TestAccount"
 }
 
+### Get all the data about a user
+GET http://localhost:6609/pushlog/user/{TOKEN}

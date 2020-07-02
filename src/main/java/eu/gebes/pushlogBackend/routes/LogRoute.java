@@ -55,8 +55,16 @@ public class LogRoute {
     }
 
     @PostMapping("/log/info")
-    LogEntry addLogEntry(@RequestBody Map<String, String> body) {
+    LogEntry addLogEntryInfo(@RequestBody Map<String, String> body) {
+        return addLog(body, false);
+    }
 
+    @PostMapping("/log/error")
+    LogEntry addLogEntryError(@RequestBody Map<String, String> body) {
+        return addLog(body, true);
+    }
+
+    LogEntry addLog(Map<String, String> body, boolean error){
         final String token = body.get("token");
 
         if (token == null)
@@ -77,9 +85,7 @@ public class LogRoute {
         log.getLogEntries().add(entry);
 
         logRepository.save(log);
-
         return entry;
     }
-
 
 }

@@ -1,26 +1,29 @@
 package eu.gebes.pushlogBackend.repositories;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Data;
+import eu.gebes.pushlogBackend.components.TokenGenerator;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.stereotype.Component;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @Document("users")
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Builder
+@RequiredArgsConstructor
 public class User {
 
-    @Id
+
+    @Id @NonNull
     String token;
 
     @Field
-    List<Log> logs;
+    List<Log> logs = new LinkedList<>();
 
 }
 

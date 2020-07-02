@@ -8,26 +8,19 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-@Document("logs")
+import java.util.List;
+
+@Document("users")
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
-public class Log {
+public class User {
 
     @Id
     String token;
 
     @Field
-    long logTime;
-
-    @Field
-    String value;
-
-    @Field
-    Type type;
+    List<Log> logs;
 
 }
 
-enum Type {
-    INFO, ERROR
-}

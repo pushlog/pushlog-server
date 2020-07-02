@@ -30,6 +30,11 @@ public class UserRoute {
         if(displayname == null)
             throw new BadRequestException("A displayname parameter in the body is required");
 
+
+        if(displayname.length() > 32)
+            throw new BadRequestException("Displayname can't be greater than 32");
+
+
         User user = new User(tokenGenerator.generateNewToken(), displayname);
 
         userRepository.save(user);

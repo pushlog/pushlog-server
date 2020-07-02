@@ -2,5 +2,8 @@
 POST http://localhost:6609/pushlog/user/
 Content-Type: application/json
 
-{}
+# returns BAD_REQUEST when displayname is not given or displayname length is greater than 32
+{
+  "displayname": "TestAccount"
+}
 

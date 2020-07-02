@@ -15,7 +15,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @AllArgsConstructor
 public class LogEntry {
 
-    // in nano seconds
+    // in milli seconds
     long timestamp;
     String value;
     boolean error;

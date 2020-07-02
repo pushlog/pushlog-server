@@ -92,7 +92,7 @@ public class LogRoute {
         if (log == null)
             throw new NotFoundException("Couldn't find a log with the token");
 
-        LogEntry entry = new LogEntry(System.nanoTime(), value, false);
+        LogEntry entry = new LogEntry(System.currentTimeMillis(), value, false);
 
         log.getLogEntries().add(entry);
 

@@ -7,6 +7,7 @@ import eu.gebes.pushlogBackend.response.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -21,6 +22,17 @@ public class LogRoute {
 
     @Autowired
     TokenGenerator tokenGenerator;
+
+    @GetMapping("/log/{token}")
+    List<LogEntry> getEntries(@PathVariable String token){
+
+        Log log = logRepository.findById(token).orElse(null);
+
+        if(log == null)
+            throw new NotFoundException("Couldn't find the log with that token");
+
+        return log.getLogEntries();
+    }
 
     @PostMapping("/log/")
     Log createLog(@RequestBody Map<String, String> body) {

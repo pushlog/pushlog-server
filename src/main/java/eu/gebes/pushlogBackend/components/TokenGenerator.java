@@ -11,6 +11,9 @@ public class TokenGenerator {
     private static final SecureRandom secureRandom = new SecureRandom();
     private static final Base64.Encoder base64Encoder = Base64.getUrlEncoder();
 
+    /**
+     * @return a new token with the length of 512
+     */
     public String generateNewToken() {
         byte[] randomBytes = new byte[512];
         secureRandom.nextBytes(randomBytes);

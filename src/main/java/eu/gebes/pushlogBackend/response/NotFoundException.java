@@ -7,11 +7,10 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 
 @EqualsAndHashCode(callSuper = true)
-@Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@AllArgsConstructor
-public class NotFoundException extends RuntimeException{
+public class NotFoundException extends BaseException{
 
-    String error;
-
+    public NotFoundException(String error) {
+        super(error);
+    }
 }

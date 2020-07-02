@@ -19,11 +19,16 @@ import java.util.List;
 public class User {
 
 
-    @Id @NonNull
+    @Id
+    @NonNull
     String token;
+
+    @NonNull @Field
+    String displayName;
 
     @Field
     List<Log> logs = new LinkedList<>();
+
 
 }
 

@@ -1,9 +1,6 @@
 package eu.gebes.pushlogBackend.routes;
 
-import eu.gebes.pushlogBackend.response.AuthException;
-import eu.gebes.pushlogBackend.response.BadRequestException;
-import eu.gebes.pushlogBackend.response.ErrorResponse;
-import eu.gebes.pushlogBackend.response.NotFoundException;
+import eu.gebes.pushlogBackend.response.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -33,5 +30,6 @@ public class ErrorHandler {
     public Object processValidationError(BadRequestException ex) {
         return new ErrorResponse(ex.getError());
     }
+
 
 }

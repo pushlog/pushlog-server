@@ -7,11 +7,10 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 
 @EqualsAndHashCode(callSuper = true)
-@Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@AllArgsConstructor
-public class BadRequestException extends RuntimeException{
+public class BadRequestException extends BaseException{
 
-    String error;
-
+    public BadRequestException(String error) {
+        super(error);
+    }
 }

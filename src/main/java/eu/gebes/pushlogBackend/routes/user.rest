@@ -1,6 +1,6 @@
+### Create a user with a factory new token
 POST http://localhost:6609/pushlog/user/
 Content-Type: application/json
 
 {}
 
-###

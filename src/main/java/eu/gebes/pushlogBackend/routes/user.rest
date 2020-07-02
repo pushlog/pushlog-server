@@ -9,3 +9,15 @@ Content-Type: application/json
 
 ### Get all the data about a user
 GET http://localhost:6609/pushlog/user/{TOKEN}
+
+### Create a new log
+POST http://localhost:6609/pushlog/log/
+Content-Type: application/json
+
+# returns BAD_REQUEST when displayname is not given or displayname length is greater than 32
+# reutrns BAD_REQUEST when token is not given
+# returns NOT_FOUND when the user associated to the token does not exist
+{
+  "displayname": "TestLog",
+  "token": "eq4S4TNuHqXOa6fFBMFhBiC5YMQ_IcCsFzlJvvJvuiZzmySKfWewxTOKTkd0Ja_bgozg3g8JelCfU6_Bu6x7bG8fozecgavihGBrWCuUqAB6NuLIsp5CqsF8i_FH_eyMEVspToQ6gsAAMEIvto2dYh2JSOsSLeOaU4qLKQVhfqQP5C6Yl3YtqPwW3P5Bx48HWskmiMgPimYZ0claAhd2WND755fPP08YzX85urTZQ46iYMIyWbWnfuNlwj1puMwUaOQ8A4pK2EJNO-UWM4_zDGx4BmHk--xkj4gIjbB2_tSzccq4aCG2a5oAugFERGwd-KeXevtvo5jzsf-Zd3K6PTluGTeSjF2FoxGIOBbKN8VTUp4qvqzX--8GdJt1NQP6CwEsIhAKRn3FzXO2PCsTLOG4n0jhmm0yuyGhl5mPALE0RbXM8PtbGZc4OQalYeg4NatCMmbMRIs-z64nSjnaQLTMTnfOigJnkQUqnBhRIwJC5jCcVRx1y434CqIkoeXR6JT3N3_J8vZo1ex22WOHi8QMTO5AqwKGkk5ph0luFmTO0HD-ZIpCjVGnQow-bWA7TTvZYjtgiPf2u4iP-0q5HXoZPt8D8cTZDfd_T_XX7v1KbcUx_JBjihXqxxMFQt-UF8oLmS06DBZe1VUwRUBFhiJJy9MSpJpl-2BgKhgYe2A="
+}

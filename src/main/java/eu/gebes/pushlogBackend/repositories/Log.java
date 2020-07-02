@@ -18,8 +18,16 @@ public class Log {
     @Id @NonNull
     String token;
 
+
+    /**
+     * token of the creator
+     */
+    @Field @NonNull
+    String creator;
+
     @Field @NonNull
     String name;
+
 
     @Field
     List<LogEntry> logEntries = new LinkedList<>();

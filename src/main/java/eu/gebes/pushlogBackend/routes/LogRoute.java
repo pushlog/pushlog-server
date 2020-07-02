@@ -17,6 +17,9 @@ public class LogRoute {
     LogRepository logRepository;
 
     @Autowired
+    UserRepository userRepository;
+
+    @Autowired
     TokenGenerator tokenGenerator;
 
     @PostMapping("/log/")
@@ -30,9 +33,23 @@ public class LogRoute {
         if (displayname.length() > 32)
             throw new BadRequestException("Displayname can't be greater than 32");
 
-        Log log = new Log(tokenGenerator.generateNewToken(), displayname);
+        final String token = body.get("token");
+
+        if (token == null)
+            throw new BadRequestException("A token parameter in the body is required: the token of the creator user is");
+
+        final User creator = userRepository.findById(token).orElse(null);
+
+        if(creator == null)
+            throw new NotFoundException("Couldn't find any user with that token");
+
+        Log log = new Log(tokenGenerator.generateNewToken(), creator.getToken(), displayname);
 
         logRepository.save(log);
+
+        creator.getLogs().add(log.getToken());
+
+        userRepository.save(creator);
 
         return log;
     }
@@ -42,21 +59,25 @@ public class LogRoute {
 
         final String token = body.get("token");
 
-        if(token == null)
+        if (token == null)
             throw new BadRequestException("A token paramter is required");
 
         final String value = body.get("value");
 
-        if(value == null)
+        if (value == null)
             throw new BadRequestException("A value paramter is required");
 
         Log log = logRepository.findById(token).orElse(null);
 
-        if(log == null)
+        if (log == null)
             throw new NotFoundException("Couldn't find a log with the token");
 
         LogEntry entry = new LogEntry(System.nanoTime(), value, false);
-        
+
+        log.getLogEntries().add(entry);
+
+        logRepository.save(log);
+
         return entry;
     }
 

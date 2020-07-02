@@ -26,8 +26,9 @@ public class User {
     @NonNull @Field
     String displayName;
 
+    // tokens of all the different logs
     @Field
-    List<Log> logs = new LinkedList<>();
+    List<String> logs = new LinkedList<>();
 
 
 }

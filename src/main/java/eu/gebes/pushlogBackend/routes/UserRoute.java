@@ -33,7 +33,7 @@ public class UserRoute {
         return user;
     }
 
-    @PostMapping("/user/")
+    @PostMapping("/user")
     User createUser(@RequestBody Map<String, String> body) {
 
         final String displayname = body.get("displayname");

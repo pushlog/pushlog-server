@@ -1,5 +1,5 @@
 ### Create a user with a factory new token
-POST http://localhost:6609/pushlog/user/
+POST https://api.gebes.eu/pushlog/user/
 Content-Type: application/json
 
 # returns BAD_REQUEST when displayname is not given or displayname length is greater than 32

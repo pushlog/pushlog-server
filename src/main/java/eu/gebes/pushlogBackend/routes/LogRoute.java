@@ -34,7 +34,7 @@ public class LogRoute {
         return log.getLogEntries();
     }
 
-    @PostMapping("/log/")
+    @PostMapping("/log")
     Log createLog(@RequestBody Map<String, String> body) {
 
         final String displayname = body.get("displayname");

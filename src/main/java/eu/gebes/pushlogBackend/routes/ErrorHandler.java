@@ -31,5 +31,11 @@ public class ErrorHandler {
         return new ErrorResponse(ex.getError());
     }
 
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ResponseBody
+    public Object processValidationError(Exception ex) {
+        return new ErrorResponse(ex.getMessage());
+    }
 
 }

@@ -16,14 +16,35 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties: {}
+                $ref: '#/components/schemas/User'
               examples:
-                example-1: {}
+                Example:
+                  value:
+                    userToken: OpMqV2sA2nHjZ_prtfNwDcmq8wuwcC06Bp5i50IDQW8eZm1bHEPQWosGjPP1_i9OuCDTeS7QvJnBRcVGwWSUp-IvJvLHqbDf7IpOuOUh_r-D98wpVe0JBoEpB87G-dRv5UjzDFhUx4lxEtMqFRrY2KjKSDKA7oDVWbQNhPvN6xN9xrXnukuirzhb5koU-ni7HVgYsCc9pngSXwhaYIYnQsK2ThnX7RxnXtH9el-bsDfxLCPXmrLHol9v14cixfIipjEKTWWVs-vbA26qZQQL6uYNtaUjMXi-j8l2z90ve07C4sdtwzAzm4OiWfIRQcZJnLxpsj-Fv0iPwJyPjyi6HTBt2addUpAE_Uv6TJN2dujmEgYY0dcKX1DynOc7Cv9PDcZdVRPzybHeTAyr_7PdNytUj3qtQzQRHYwPj8k1BnRFQnf83tRV_Ib3OyAX4c9KFaANKoyvalFnoH0IagTPnc-ZJYGT8YBeYMWHsAK6T_SYFoI51sVCKBXi0p5rGzz-0OlyMfkW1CCWJ_sBO9TdMqOUTz65rCcthCLtpPsHBDq4H160lUx-X4JPJQpkze-cBsWGjAAVTEC-9HYKQLpmtd_zf1EWnz6IoT5hfAGX9bCOWJzPOHMSWWrsigFlDlzr96Zqd6POF71QBWwHaTye4peHZ4ExMA_xry0zOkSQIWA=
+                    displayName: TestAccount
+                    logs: []
             application/xml:
               schema:
                 type: object
                 properties: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                  - error
+              examples:
+                Example 1:
+                  value:
+                    error: A displayname parameter in the body is required
+                Example 2:
+                  value:
+                    error: Displayname can't be greater than 32
       description: Create a user with a brandnew token
       requestBody:
         content:
@@ -41,5 +62,80 @@ paths:
                 value:
                   displayname: My User Name
         description: ''
+      parameters: []
+  '/user/{userToken}':
+    parameters:
+      - schema:
+          type: string
+        name: userToken
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                Example:
+                  value:
+                    userToken: OpMqV2sA2nHjZ_prtfNwDcmq8wuwcC06Bp5i50IDQW8eZm1bHEPQWosGjPP1_i9OuCDTeS7QvJnBRcVGwWSUp-IvJvLHqbDf7IpOuOUh_r-D98wpVe0JBoEpB87G-dRv5UjzDFhUx4lxEtMqFRrY2KjKSDKA7oDVWbQNhPvN6xN9xrXnukuirzhb5koU-ni7HVgYsCc9pngSXwhaYIYnQsK2ThnX7RxnXtH9el-bsDfxLCPXmrLHol9v14cixfIipjEKTWWVs-vbA26qZQQL6uYNtaUjMXi-j8l2z90ve07C4sdtwzAzm4OiWfIRQcZJnLxpsj-Fv0iPwJyPjyi6HTBt2addUpAE_Uv6TJN2dujmEgYY0dcKX1DynOc7Cv9PDcZdVRPzybHeTAyr_7PdNytUj3qtQzQRHYwPj8k1BnRFQnf83tRV_Ib3OyAX4c9KFaANKoyvalFnoH0IagTPnc-ZJYGT8YBeYMWHsAK6T_SYFoI51sVCKBXi0p5rGzz-0OlyMfkW1CCWJ_sBO9TdMqOUTz65rCcthCLtpPsHBDq4H160lUx-X4JPJQpkze-cBsWGjAAVTEC-9HYKQLpmtd_zf1EWnz6IoT5hfAGX9bCOWJzPOHMSWWrsigFlDlzr96Zqd6POF71QBWwHaTye4peHZ4ExMA_xry0zOkSQIWA=
+                    displayName: TestAccount
+                    logs: []
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              examples:
+                Example:
+                  value:
+                    error: Couldn't find user with the requested token
+      operationId: get-user-userToken
+      parameters: []
+      description: Get all the info and logs about a user
 components:
-  schemas: {}
+  schemas:
+    User:
+      title: User
+      type: object
+      properties:
+        userToken:
+          type: string
+        displayName:
+          type: string
+        logs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Log'
+      x-examples:
+        Example:
+          userToken: OpMqV2sA2nHjZ_prtfNwDcmq8wuwcC06Bp5i50IDQW8eZm1bHEPQWosGjPP1_i9OuCDTeS7QvJnBRcVGwWSUp-IvJvLHqbDf7IpOuOUh_r-D98wpVe0JBoEpB87G-dRv5UjzDFhUx4lxEtMqFRrY2KjKSDKA7oDVWbQNhPvN6xN9xrXnukuirzhb5koU-ni7HVgYsCc9pngSXwhaYIYnQsK2ThnX7RxnXtH9el-bsDfxLCPXmrLHol9v14cixfIipjEKTWWVs-vbA26qZQQL6uYNtaUjMXi-j8l2z90ve07C4sdtwzAzm4OiWfIRQcZJnLxpsj-Fv0iPwJyPjyi6HTBt2addUpAE_Uv6TJN2dujmEgYY0dcKX1DynOc7Cv9PDcZdVRPzybHeTAyr_7PdNytUj3qtQzQRHYwPj8k1BnRFQnf83tRV_Ib3OyAX4c9KFaANKoyvalFnoH0IagTPnc-ZJYGT8YBeYMWHsAK6T_SYFoI51sVCKBXi0p5rGzz-0OlyMfkW1CCWJ_sBO9TdMqOUTz65rCcthCLtpPsHBDq4H160lUx-X4JPJQpkze-cBsWGjAAVTEC-9HYKQLpmtd_zf1EWnz6IoT5hfAGX9bCOWJzPOHMSWWrsigFlDlzr96Zqd6POF71QBWwHaTye4peHZ4ExMA_xry0zOkSQIWA=
+          displayName: TestAccount
+          logs: []
+    Log:
+      title: Log
+      type: object
+      properties:
+        logToken:
+          type: string
+        displayName:
+          type: string
+    LogEntry:
+      title: LogEntry
+      type: object
+      properties:
+        timestamp:
+          type: number
+        value:
+          type: string
+        level:
+          type: string

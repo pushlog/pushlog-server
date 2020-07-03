@@ -39,7 +39,7 @@ public class UserRoute {
         final String displayname = body.get("displayName");
 
         if (displayname == null)
-            throw new BadRequestException("A displayNamex^ parameter in the body is required");
+            throw new BadRequestException("A displayName parameter in the body is required");
 
 
         if (displayname.length() > 32)

@@ -4,7 +4,7 @@ Content-Type: application/json
 
 # returns BAD_REQUEST when displayname is not given or displayname length is greater than 32
 {
-  "displayname": "TestAccount"
+  "displayName": "TestAccount"
 }
 
 ### Get all the data about a user
@@ -18,8 +18,8 @@ Content-Type: application/json
 # reutrns BAD_REQUEST when token is not given
 # returns NOT_FOUND when the user associated to the token does not exist
 {
-  "displayname": "TestLog",
-  "userToken": "uCQOc_TNRKsgu_le3gE7EKZtpEpy8HOeU_Q5n1B9EvjzyB0a-8dqndqieqG16JUjMcuHqPlgzna6Mg2fZ06et2U0Mc3VklfOrGZX8zN_DyFVBquf6PD_xhpep-kajBxifAK3MttzdruLXXspl4Rqu6dE16-tSJDPAJOSIiRK7R2e-k8PLXp_zy--5y3IQxBa-jeij_2z-vYdGlgu_HaOtlddAiOX6019lEg5vv7lcWkaNph9PudwglTrQSzjl8KsGcqw-_tyoJEMLbSg1wPWXwrOXY1ue22eF0aXhmw5a_5-rfeQE99-DtKsrIPsfBWhrUnTQxxD6Zlo-cmQ2AK62LYDswMXrvxCYq4ZZqYDrr1u7_iMnDQatRoe2xrls_GDCpuGVIp5bXdkq8sI7AyrwZ287xBOUrLAW5fkI507qRMoqvfvcJFyV9zFurthLxNz-gU-jocASEAnH2xJ6u5td0uSAY4cfiO3XYr7G09ahplsDZ2-N2eYu7yCQZsqAMaVtd_8eUgQ9OG9r7tgNhnLLtIEjr0bR5o8VRVXBVWkwGMo84_Y2PBscC7WKSCMRe0Ut53ePFeKu1wj8jnfPhIYB5dEwN5t2s7xzpsXLu1_qKiaz8NQsBZc2kAXpKUKW8tGSNTUIxfGXdkCh8ejTQSxaEfTzI9rAl6aFQpfzkcqJ9Y="
+  "displayName": "TestLog",
+  "userToken": "UnWEkupaYq1g_OyjFpYlIRDs3ScKPCNPh3PH6eJSJTPqfXoTda4YtimGXCsekDw6tj8-C9TuKtTRuZhBLXyZcp3KD8ilrvE6FnpLQnTdJhCrEwzh0ZH5v3AMqr4HJlD_6zFY9MpCCf5pi2uyqHPN88BFqqMmgdNfrkYjfjTQWJyORMjwmT3qkA02aucKvkYfU35DuOLAUPPWlLbjgpu2KkZQGdtheiHht8iigy7KDXlvj4RgskXWkXi1Mpf5QvkI1wC12p5pTsRbbQoBiiKKG2Q5lZdol_MRcE2CMqKvgya1Vz7MirP6BpVgg2ss6LMAKyZu9qwmz-9w-EZPQ1sTcaPy_htjIwX3npH_2yifCKUDfnaNJwh5wfnnSADoZw-fOX8ba4QT_U8Ugymp_L8iDLDt0cVacnwNr5lWy1dsEyeqcyQOOVbyJYa71ooQdI_DNfIvd3cHULhaNR26stENelWT_3Rpgxp8nzJe1mvfbWpG_EjIq2RxdB_dLtoCQeAG7R7Ux9Gj3fq3yHhrBhAdl8I923AcUQ1T7xpIF5oQaUUJL4StBl10YcGVaOc6QvccrqROcMcD7oU6Is3y7NaBb6NoTdnVcoGzDSqjq7XCC_Dv-vWrCyE2bxCW8gD4QiPsSx6AF55YfuejdU18QZ4KPu_EsvzcA8kpSE2PHM7BRns="
 }
 
 ###

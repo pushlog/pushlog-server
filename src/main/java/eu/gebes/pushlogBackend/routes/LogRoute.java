@@ -57,7 +57,7 @@ public class LogRoute {
         final User creator = userRepository.findById(userToken).orElse(null);
 
         if (creator == null)
-            throw new NotFoundException("Couldn't find any user with that token");
+                throw new NotFoundException("Couldn't find any user with that token");
 
         Log log = new Log(tokenGenerator.generateNewToken(), creator.getUserToken(), displayname);
 

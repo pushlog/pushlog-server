@@ -232,6 +232,58 @@ paths:
                 value:
                   logToken: pXd3jFxsChzw93Dk4dRpc3yUWBNsMX9SGmF_B87UNYJT7yp8pYcb1hcrM6dkiOyybEjnBbFZX3OoZ0chmKjFmbLnANTUk25AxovyWvoSnG4RhsS2KSC0twnOqsy9WYiukXWLPgTy9DeKNEsD9UKalJs8_xB8DhcNNvx9EMcbTA7xnlAwVhEdmakxSMFtb1A_mtrzystjvyyiT8mpNFW38mIdS5DT1tVG4iWNLcvgeG7XzqMaDcPkbpqQFKGUrvkhEXK-fBdll1gwroqypkTTA57b-d2QIGo1uj54v9BXdlwip2NpL_AcCe3Sw3ZybdZqsfVVoVf-9iANouP3CR-zhxJ9TdILIKKMCebyruaPU0sNNTE4MVc_yYNUUwIq4h2dxq1Ma3NGMI6K-H28vEnfHK9MGTYoXDrnvf0au6ln1sy3PStuOfTkDi2ryg0Dl-5v-CRXphtCXUkk1x63ZyXanc9bVt4qIM0EzT43Is4cYh4MM1X2kQ1ghnqeR7fuaOlZpZY8M-zO-sgcYfQQJX-u4ELES9War32vdD0PnddcBx1MRu7Nbq1elbacYYLGJiXXJOEHlyorL4YvnwJ-MYM5PjtlyVDkHWZBlVAG4AfL3OnSUqz0fu0FoPZaM-NH9z9TOlvdrZH3GjCFOpa4VQhwVt8p9L6oDHLaxlZgkRj8y9w=
                   value: "\U0001F7E8Alarm! We got hacked but the backend still runs, so everything is still fine"
+  '/log/{logToken}/from/{start}/until/{end}':
+    parameters:
+      - schema:
+          type: string
+        name: logToken
+        in: path
+        required: true
+      - schema:
+          type: number
+        name: start
+        in: path
+        required: true
+        description: unix time in milliseconds
+      - schema:
+          type: number
+        name: end
+        in: path
+        required: true
+        description: unix time in milliseconds
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LogEntry'
+              examples:
+                Example:
+                  value:
+                    - timestamp: 123
+                      value: the log message
+                      level: info
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              examples:
+                Example:
+                  value:
+                    error: Couldn't find the log with that token
+      operationId: get-log-logToken-from-start-until-end
+      description: Returns all the logs in a time range
 components:
   schemas:
     User:

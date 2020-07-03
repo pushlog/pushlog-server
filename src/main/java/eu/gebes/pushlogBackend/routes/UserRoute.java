@@ -22,10 +22,10 @@ public class UserRoute {
     @Autowired
     TokenGenerator tokenGenerator;
 
-    @GetMapping("/user/{token}")
-    User getUserData(@PathVariable String token) {
+    @GetMapping("/user/{userToken}")
+    User getUserData(@PathVariable String userToken) {
 
-        User user = userRepository.findById(token).orElse(null);
+        User user = userRepository.findById(userToken).orElse(null);
 
         if (user == null)
             throw new NotFoundException("Couldn't find user with the requested token");

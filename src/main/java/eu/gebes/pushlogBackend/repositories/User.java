@@ -5,6 +5,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.stereotype.Component;
@@ -27,8 +28,8 @@ public class User {
     String displayName;
 
     // tokens of all the different logs
-    @Field
-    List<String> logs = new LinkedList<>();
+    @DBRef
+    List<Log> logs = new LinkedList<>();
 
 
 }

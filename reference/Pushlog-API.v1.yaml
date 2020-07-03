@@ -48,7 +48,7 @@ paths:
                 Example 2:
                   value:
                     error: Displayname can't be greater than 32
-      description: Create a user with a brandnew token
+      description: Create a user with a brandnew userToken
       requestBody:
         content:
           application/json:
@@ -105,6 +105,38 @@ paths:
       operationId: get-user-userToken
       parameters: []
       description: Get all the info and logs about a user
+  /log:
+    post:
+      summary: ''
+      operationId: post-log
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Log'
+              examples:
+                Example:
+                  value:
+                    logToken: '-N8CF3f5-RD5vu-PGEWh9l9KQzt_3w3pBT_n7gKXTzqEeFx1kqWpGm6ofasQOhN5yILbbndz63oDDBZmomBrXSkuCQCZIh7_ez9ivrdE07q5BanP89DsNrFx-NrhzxlzvspupV3X_UR7Px8lKLaHF5_sfxKJO1MO__hq6EUTpmli6CQlZsC2oUp4akm4Xrv3nMv6bucExPkEK6DtEnAbV8m4-0t4eCvGxFpUnBwVDc2uS1TU2wf-OGI_RseydK8sRGAGoW-FcgYtsknXqytoiUpX9wxLEucNbfX6uiaPS3ubjNnBGaSMr2_e4-FEu-K6tbln4HYJv7unIOy51yqJuYDj_rENpFyLBrk-uZTe03nvY95ge1EeoOxowenIU8zwGKRyad0XJsjI-NJ7fJLuS45t5to0GyQlK4EVA6WJci-68sLYWZDpzvfsI7HL6ptSOXnI72E5-SewiLbXiidJoN89GBMltqwbQhuL7DJ9MeUC1UCFpb77bqcO5hUNu3PXEGyzkAWnGh56_cOHKnnJ_4LMA1LUqRW__As4nzyC79UlhV-lGFcVroE9kw1uqP-4oFVWBeegI0Vi_szJDw4TUqo-rbrjxZqEINphyjpdPQRbWsTySnp1Nkyk1A5aniFPZ0SPSprw48lHggA71ogqOXMlAzu53q8QlxYpakqrW_Y='
+                    displayName: TestLog
+      description: Create a user with a brandnew logToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                displayName:
+                  type: string
+                  description: |
+                    name <= 32
+                userToken:
+                  type: string
+                  description: |
+                    token of the creator
+        description: ''
 components:
   schemas:
     User:

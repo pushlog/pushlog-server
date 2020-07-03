@@ -28,26 +28,26 @@ public class LogRoute {
     TokenGenerator tokenGenerator;
 
     @GetMapping("/log/{logToken}/from/{start}/until/{end}")
-    List<LogEntry> getEntries(@PathVariable String logToken, @PathVariable Long start, @PathVariable Long end){
+    List<LogEntry> getEntries(@PathVariable String logToken, @PathVariable Long start, @PathVariable Long end) {
 
         Log log = logRepository.findById(logToken).orElse(null);
 
-        if(log == null)
+        if (log == null)
             throw new NotFoundException("Couldn't find the log with that token");
 
-        return logEntryRepository.findLogEntriesByTimestampIsBetweenAndLog_TokenEquals(start, end, logToken).orElse(new LinkedList<>());
+        return logEntryRepository.findLogEntriesByTimestampIsBetweenAndLog_LogToken(start, end, logToken).orElse(new LinkedList<>());
     }
 
     @PostMapping("/log")
     Log createLog(@RequestBody Map<String, String> body) {
 
-        final String displayname = body.get("displayname");
+        final String displayname = body.get("displayName");
 
         if (displayname == null)
-            throw new BadRequestException("A displayname parameter in the body is required");
+            throw new BadRequestException("A displayName parameter in the body is required");
 
         if (displayname.length() > 32)
-            throw new BadRequestException("Displayname can't be greater than 32");
+            throw new BadRequestException("displayName can't be greater than 32");
 
         final String userToken = body.get("userToken");
 
@@ -56,10 +56,10 @@ public class LogRoute {
 
         final User creator = userRepository.findById(userToken).orElse(null);
 
-        if(creator == null)
+        if (creator == null)
             throw new NotFoundException("Couldn't find any user with that token");
 
-        Log log = new Log(tokenGenerator.generateNewToken(), creator.getToken(), displayname);
+        Log log = new Log(tokenGenerator.generateNewToken(), creator.getUserToken(), displayname);
 
         logRepository.save(log);
 
@@ -71,8 +71,8 @@ public class LogRoute {
     }
 
     @PostMapping("/log/{level}")
-    LogEntry addLogEntry(@RequestBody Map<String, String> body, @PathVariable String level){
-      final String token = body.get("logToken");
+    LogEntry addLogEntry(@RequestBody Map<String, String> body, @PathVariable String level) {
+        final String token = body.get("logToken");
 
         if (token == null)
             throw new BadRequestException("A logToken paramter is required");

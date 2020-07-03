@@ -20,7 +20,7 @@ public class LogEntry {
 
     @JsonIgnore
     @Id
-    String token;
+    String logEntryToken;
 
     @JsonIgnore
     @DBRef

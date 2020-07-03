@@ -18,7 +18,7 @@ import java.util.List;
 public class Log {
 
     @Id @NonNull
-    String token;
+    String logToken;
 
 
     /**
@@ -26,10 +26,10 @@ public class Log {
      */
     @JsonIgnore
     @Field @NonNull
-    String creator;
+    String creatorUserToken;
 
     @Field @NonNull
-    String name;
+    String displayName;
 
     @JsonIgnore
     @DBRef

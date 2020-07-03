@@ -1,0 +1,45 @@
+openapi: 3.0.0
+info:
+  title: Pushlog API
+  version: '1.0'
+  description: ''
+servers:
+  - url: 'https://api.gebes.eu/pushlog'
+paths:
+  /user:
+    post:
+      summary: ''
+      operationId: post-user
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                example-1: {}
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+      description: Create a user with a brandnew token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                displayname:
+                  type: string
+                  description: display name <= 32
+              required:
+                - displayname
+            examples:
+              Example:
+                value:
+                  displayname: My User Name
+        description: ''
+components:
+  schemas: {}

@@ -35,7 +35,7 @@ public class LogRoute {
         if(log == null)
             throw new NotFoundException("Couldn't find the log with that token");
 
-        return logEntryRepository.findLogEntriesByTimestampIsGreaterThanAndTimestampIsLessThanAndLog_TokenOrderByTimestampAsc(start, end, logToken).orElse(new LinkedList<>());
+        return logEntryRepository.findLogEntriesByTimestampIsBetweenAndLog_TokenEquals(start, end, logToken).orElse(new LinkedList<>());
     }
 
     @PostMapping("/log")

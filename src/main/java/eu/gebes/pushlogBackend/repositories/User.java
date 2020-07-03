@@ -22,7 +22,7 @@ public class User {
 
     @Id
     @NonNull
-    String token;
+    String userToken;
 
     @NonNull @Field
     String displayName;

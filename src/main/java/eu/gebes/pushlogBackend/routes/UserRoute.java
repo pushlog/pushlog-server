@@ -36,10 +36,10 @@ public class UserRoute {
     @PostMapping("/user")
     User createUser(@RequestBody Map<String, String> body) {
 
-        final String displayname = body.get("displayname");
+        final String displayname = body.get("displayName");
 
         if (displayname == null)
-            throw new BadRequestException("A displayname parameter in the body is required");
+            throw new BadRequestException("A displayName parameter in the body is required");
 
 
         if (displayname.length() > 32)

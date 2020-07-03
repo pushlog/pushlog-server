@@ -7,6 +7,7 @@ import eu.gebes.pushlogBackend.response.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -26,15 +27,15 @@ public class LogRoute {
     @Autowired
     TokenGenerator tokenGenerator;
 
-    @GetMapping("/log/{logToken}")
-    List<LogEntry> getEntries(@PathVariable String logToken){
+    @GetMapping("/log/{logToken}/from/{start}/until/{end}")
+    List<LogEntry> getEntries(@PathVariable String logToken, @PathVariable Long start, @PathVariable Long end){
 
         Log log = logRepository.findById(logToken).orElse(null);
 
         if(log == null)
             throw new NotFoundException("Couldn't find the log with that token");
 
-        return log.getLogEntries();
+        return logEntryRepository.findLogEntriesByTimestampIsGreaterThanAndTimestampIsLessThanAndLog_TokenOrderByTimestampAsc(start, end, logToken).orElse(new LinkedList<>());
     }
 
     @PostMapping("/log")
@@ -86,7 +87,7 @@ public class LogRoute {
         if (log == null)
             throw new NotFoundException("Couldn't find a log with the token");
 
-        LogEntry entry = new LogEntry(tokenGenerator.generateNewToken(), System.currentTimeMillis(), value, level);
+        LogEntry entry = new LogEntry(tokenGenerator.generateNewToken(), log, System.currentTimeMillis(), value, level);
 
         logEntryRepository.save(entry);
         log.getLogEntries().add(entry);

@@ -3,6 +3,9 @@ info:
   title: Pushlog API
   version: '1.0'
   description: ''
+  contact:
+    name: Christoph
+    email: christoph_krassnigg@gmx.net
 servers:
   - url: 'https://api.gebes.eu/pushlog'
 paths:
@@ -139,3 +142,4 @@ components:
           type: string
         level:
           type: string
+  securitySchemes: {}

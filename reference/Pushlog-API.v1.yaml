@@ -8,7 +8,7 @@ servers:
 paths:
   /user:
     post:
-      summary: ''
+      summary: Create User
       operationId: post-user
       responses:
         '200':
@@ -71,7 +71,7 @@ paths:
         in: path
         required: true
     get:
-      summary: Your GET endpoint
+      summary: Get User
       tags: []
       responses:
         '200':

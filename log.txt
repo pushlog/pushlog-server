@@ -79,3 +79,30 @@ Caused by: java.net.ConnectException: Connection refused
 2020-07-08 15:02:09.809  INFO 88484 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
 2020-07-08 15:02:10.013  INFO 88484 --- [main] e.g.p.PushlogBackendApplicationTests     : Started PushlogBackendApplicationTests in 2.188 seconds (JVM running for 3.1)
 2020-07-08 15:02:10.465  INFO 88484 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-08 15:27:28.378  INFO 95576 --- [main] e.g.p.PushlogBackendApplicationTests     : Starting PushlogBackendApplicationTests on Christophs-MBP with PID 95576 (started by christoph in /Users/christoph/Documents/GitHub/Pushlog/pushlogBackend)
+2020-07-08 15:27:28.379  INFO 95576 --- [main] e.g.p.PushlogBackendApplicationTests     : No active profile set, falling back to default profiles: default
+2020-07-08 15:27:29.042  INFO 95576 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2020-07-08 15:27:29.102  INFO 95576 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55ms. Found 3 MongoDB repository interfaces.
+2020-07-08 15:27:29.539  INFO 95576 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2020-07-08 15:27:29.587  INFO 95576 --- [cluster-ClusterId{value='5f05c9c1a1d1af39235cbd7e', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server 127.0.0.1:27017
+
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.internal.connection.SocketStream.open(SocketStream.java:70) ~[mongodb-driver-core-4.0.4.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:127) ~[mongodb-driver-core-4.0.4.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:117) ~[mongodb-driver-core-4.0.4.jar:na]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:589) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:333) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:648) ~[na:na]
+	at com.mongodb.internal.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:63) ~[mongodb-driver-core-4.0.4.jar:na]
+	at com.mongodb.internal.connection.SocketStream.initializeSocket(SocketStream.java:79) ~[mongodb-driver-core-4.0.4.jar:na]
+	at com.mongodb.internal.connection.SocketStream.open(SocketStream.java:65) ~[mongodb-driver-core-4.0.4.jar:na]
+	... 3 common frames omitted
+
+2020-07-08 15:27:30.254  INFO 95576 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-08 15:27:30.489  INFO 95576 --- [main] e.g.p.PushlogBackendApplicationTests     : Started PushlogBackendApplicationTests in 2.441 seconds (JVM running for 3.579)
+2020-07-08 15:27:30.944  INFO 95576 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'

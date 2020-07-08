@@ -87,7 +87,7 @@ public class LogRoute {
         if (user == null)
             throw new NotFoundException("Couldn't find user with the requested token");
 
-        Log log = logRepository.findById(userToken).orElse(null);
+        Log log = logRepository.findById(logToken).orElse(null);
 
         if (log == null)
             throw new NotFoundException("Couldn't find log with the requested token");

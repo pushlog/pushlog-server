@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>eu.gebes</groupId>
 	<artifactId>pushlogBackend</artifactId>
-	<version>1.5</version>
+	<version>1.6</version>
 	<name>pushlogBackend</name>
 	<description>Backend for our PushlogApp</description>
 

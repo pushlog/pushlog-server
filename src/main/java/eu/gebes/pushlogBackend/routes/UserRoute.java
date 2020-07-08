@@ -1,6 +1,8 @@
 package eu.gebes.pushlogBackend.routes;
 
 import eu.gebes.pushlogBackend.components.TokenGenerator;
+import eu.gebes.pushlogBackend.repositories.Log;
+import eu.gebes.pushlogBackend.repositories.LogRepository;
 import eu.gebes.pushlogBackend.repositories.User;
 import eu.gebes.pushlogBackend.repositories.UserRepository;
 import eu.gebes.pushlogBackend.response.BadRequestException;
@@ -20,6 +22,9 @@ public class UserRoute {
     UserRepository userRepository;
 
     @Autowired
+    LogRepository logRepository;
+
+    @Autowired
     TokenGenerator tokenGenerator;
 
     @GetMapping("/user/{userToken}")
@@ -32,6 +37,8 @@ public class UserRoute {
 
         return user;
     }
+
+
 
     @PostMapping("/user")
     User createUser(@RequestBody Map<String, String> body) {

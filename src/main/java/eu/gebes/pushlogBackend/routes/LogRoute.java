@@ -70,6 +70,36 @@ public class LogRoute {
         return log;
     }
 
+    @PostMapping("/log/add")
+    Log addLog(@RequestBody Map<String, String> body) {
+
+        final String userToken = body.get("userToken");
+        final String logToken = body.get("userToken");
+
+        if (userToken == null)
+            throw new BadRequestException("A userToken parameter in the body is required");
+
+        if (logToken == null)
+            throw new BadRequestException("A logToken parameter in the body is required");
+
+        User user = userRepository.findById(userToken).orElse(null);
+
+        if (user == null)
+            throw new NotFoundException("Couldn't find user with the requested token");
+
+        Log log = logRepository.findById(userToken).orElse(null);
+
+        if (log == null)
+            throw new NotFoundException("Couldn't find log with the requested token");
+
+        user.getLogs().add(log);
+
+        userRepository.save(user);
+
+        return log;
+
+    }
+
     @PostMapping("/log/{level}")
     LogEntry addLogEntry(@RequestBody Map<String, String> body, @PathVariable String level) {
         final String token = body.get("logToken");

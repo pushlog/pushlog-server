@@ -74,7 +74,7 @@ public class LogRoute {
     Log addLog(@RequestBody Map<String, String> body) {
 
         final String userToken = body.get("userToken");
-        final String logToken = body.get("userToken");
+        final String logToken = body.get("logToken");
 
         if (userToken == null)
             throw new BadRequestException("A userToken parameter in the body is required");

@@ -57,7 +57,7 @@ public class LogRoute {
         final User creator = userRepository.findById(userToken).orElse(null);
 
         if (creator == null)
-                throw new NotFoundException("Couldn't find any user with that token");
+            throw new NotFoundException("Couldn't find any user with that token");
 
         Log log = new Log(tokenGenerator.generateNewToken(), creator.getUserToken(), displayname);
 
@@ -91,6 +91,9 @@ public class LogRoute {
 
         if (log == null)
             throw new NotFoundException("Couldn't find log with the requested token");
+
+        if (user.getLogs().stream().anyMatch(allLogs -> allLogs.getLogToken().equals(log.getLogToken())))
+            throw new BadRequestException("You have a already added this log");
 
         user.getLogs().add(log);
 
